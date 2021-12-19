@@ -1,0 +1,9 @@
+mstsc
+ipconfig
+ls -ltr
+mkdir -p d1/d2/d3
+chmod 444
+ch mod 755
+chmod355
+chmod 741
+etc
