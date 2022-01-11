@@ -1,0 +1,4 @@
+ls -ltr
+mkdir -p d1/d2/d3
+chmod 755
+chmod 444 f1
