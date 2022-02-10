@@ -1,0 +1,26 @@
+- hosts: all
+tasks:
+- name: “httpd”
+state: present
+- name: “Creating new directory for root to configure HTTPD”
+file:
+state: directory
+path: “/var/www/myconf”
+- name: “Copying new conf file for HTTPD”
+copy:
+src: “newconf.conf”
+dest: “/etc/httpd/conf.d/newconf.conf”
+- name: “Copying content to Document root”
+copy:
+dest: “/var/www/myconf/myweb.html”
+content: “This is my webpage”
+- name: “Exposing the port”
+firewalld:
+port: “7777/tcp”
+state: enabled
+permanent: yes
+immediate: yes
+- name: “Restarting HTTPD Service”
+shell: “/usr/sbin/httpd”
+register: startoutput
+changed_when: "already running" not in startoutput.stdout”
