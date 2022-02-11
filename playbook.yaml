@@ -1,0 +1,6 @@
+---
+- name: restart apache
+  hosts: all
+  tasks:
+  - name: restart apache 
+    state: enable
