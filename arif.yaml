@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become_user: root
+  tasks:
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
+    
+  handlers:
+    - name: reload apache2
+      service: name=apache2 state=reloaded
+        
+    - name: restart apache2
+      service: name=apache2 state=restarted
